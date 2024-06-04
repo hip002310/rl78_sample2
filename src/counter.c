@@ -39,6 +39,7 @@ Includes <System Includes> , "Project Includes"
 #include "config.h"
 #include <string.h>
 #include "counter.h"
+#include "panel.h"
 
 /*******************************************************************************
 Macro definitions
@@ -241,6 +242,7 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max )
 	if (count > max) {
 		/* (Count value of binary counter)<-0 */
 		count = 0;
+		panel_count();
 	}
 	
 	/* This value of cp0 of binary counter is preserved. */

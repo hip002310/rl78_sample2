@@ -69,6 +69,7 @@ UCHAR	g74HC77_Count = 0;
 #if defined IC74HC4511_USED
 UCHAR	g74HC4511_LastNum[IC74HC4511_USED];
 UCHAR	g74HC4511_Count = 0;
+extern int g_panel_count;
 #endif /* end of defined IC74HC4511_USED */
 
 #if defined IC74HC166_USED
@@ -770,37 +771,74 @@ UCHAR  IC_74HC4511_Judge_State( UCHAR LE_in, UCHAR BI_in, UCHAR LT_in )
 * Return Value : Numerical value that input value shows	(0-10)
 *                (Ten is set in case of ten or more)
 ********************************************************************************/
-UCHAR  IC_74HC4511_Evaluate( UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHAR D_in )
+UCHAR IC_74HC4511_Evaluate(UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHAR D_in)
 {
-	/*							   abcdefgh		*/
-	UCHAR ucRet[11] =  { 0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110,
-							     0b10110110, 0b00111110, 0b11100000, 0b11111110, 0b11100110, 0b00000000 };
-	UCHAR	ucValue;
+    /*							   abcdefgh		*/
+    UCHAR ucRet[11] = {0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110,
+                       0b10110110, 0b00111110, 0b11100000, 0b11111110, 0b11100110, 0b00000000};
+   UCHAR ucRet_2[11] = {0b11111101, 0b01100001, 0b11011011, 0b11110011, 0b01100111,
+                       0b10110111, 0b00111111, 0b11100001, 0b11111111, 0b11100111, 0b00000000};
+    UCHAR ucValue;
+    UCHAR ucValue_2;
+   
+    if(g_panel_count==0){
+    
+        switch (State) {
+        case 0:
+            ucValue = A_in + (B_in << 1) + (C_in << 2) + (D_in << 3);
+            if (ucValue > 10) ucValue = 10;
+            ByteMemSet(g74HC4511_LastNum, g74HC4511_Count, ucValue);
+	    
+            break;
+        case 1:
+            ucValue = 8;
+            break;
+        case 2:
+            ucValue = 10;
+            break;
+        case 3:
+            ucValue = ByteMemGet(g74HC4511_LastNum, g74HC4511_Count);
+            break;
+        default:
+            ucValue = 10;
+            break;
+        }
 	
-	switch(State)
-	{
-		case 0:
-			ucValue = A_in + (B_in << 1) + (C_in << 2) + (D_in << 3);
-			if(ucValue > 10) ucValue = 10;
-			ByteMemSet(g74HC4511_LastNum, g74HC4511_Count, ucValue);
-			break;
-		case 1:
-			ucValue = 8;
-			break;
-		case 2:
-			ucValue = 10;
-			break;
-		case 3:
-			ucValue = ByteMemGet(g74HC4511_LastNum, g74HC4511_Count);
-			break;
-		default:
-			ucValue = 10;
-			break;
+        return ucRet[ucValue];
+    }
+	else if(g_panel_count==1){
+		
+        switch (State) {
+        case 0:
+            ucValue_2 = A_in + (B_in << 1) + (C_in << 2) + (D_in << 3);
+            if (ucValue_2 > 10) ucValue_2 = 10;
+            ByteMemSet(g74HC4511_LastNum, g74HC4511_Count, ucValue_2);
+	    
+            break;
+        case 1:
+            ucValue_2 = 8;
+            break;
+        case 2:
+            ucValue_2 = 10;
+            break;
+        case 3:
+            ucValue_2 = ByteMemGet(g74HC4511_LastNum, g74HC4511_Count);
+            break;
+        default:
+            ucValue_2 = 10;
+            break;
+        }
+	
+        return ucRet_2[ucValue_2];
 	}
+
+		
 	
-	if (ucValue > 10) ucValue = 10;
-	return ucRet[ucValue];
 }
+	
+       
+
+
 
 /*******************************************************************************
 * Function Name: IC74HC4511_Initialize
@@ -1019,4 +1057,3 @@ UCHAR  IC_74HC280_Evaluate( UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHAR D_in, UCHA
 	return ucCnt;
 }
 #endif /* end of defined IC74HC280_USED */
-

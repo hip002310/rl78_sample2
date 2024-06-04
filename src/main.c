@@ -73,6 +73,8 @@ void main_loop( void );
 ********************************************************************************/
 void main( void )
 {
+	
+	
 	/* Hardware Initiate */
 	hdwinit();
 
@@ -91,14 +93,18 @@ void main( void )
 ********************************************************************************/
 void main_loop( void )
 {
+	
 	while(1) {
 
+		
 		/* Panel proccessing */
 		panel();
+	
 
 		/* Watchdog timer reset start */
 		WDT_Reset();
 
+	
 #if !defined PWM_USED
 		/* Processing at 10ms cycle */
 		if(TM_10ms()){
