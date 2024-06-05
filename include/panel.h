@@ -40,6 +40,7 @@ Exported global variables and functions (to be accessed by other files)
 void	panel_init0( void );
 void	panel( void );
 void    panel_count(void);
+void panel_count_Init(void);
 /*******************************************************************************
 Includes <System Includes> , "Project Includes"
 *******************************************************************************/

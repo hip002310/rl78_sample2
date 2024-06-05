@@ -103,6 +103,11 @@ void panel(void)
 void panel_count(void)
 {
 	g_panel_count=1;
+	
+}
+void panel_count_Init(void)
+{
+	g_panel_count=0;
 }
 
 	

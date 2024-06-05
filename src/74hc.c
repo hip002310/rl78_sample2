@@ -828,7 +828,6 @@ UCHAR IC_74HC4511_Evaluate(UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHA
             ucValue_2 = 10;
             break;
         }
-	
         return ucRet_2[ucValue_2];
 	}
 

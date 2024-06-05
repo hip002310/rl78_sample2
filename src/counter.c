@@ -71,6 +71,7 @@ static UCHAR	g_ucBCNT_LastCounterVal[BCNT_USED];
 static UCHAR	g_ucBCNT_LastCp0[(BCNT_USED / 8) + 1];
 static UCHAR	g_ucBCNT_LastCp1[(BCNT_USED / 8) + 1];
 static UCHAR	g_ucBCNT_Count;
+extern int g_panel_count;
 #endif /* end of defined BCNT_USED */
 
 #if defined CNT_USED
@@ -242,7 +243,12 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max )
 	if (count > max) {
 		/* (Count value of binary counter)<-0 */
 		count = 0;
-		panel_count();
+		if(g_panel_count==0){
+		        panel_count();
+		}else if(g_panel_count==1){
+			panel_count_Init();
+		}
+		
 	}
 	
 	/* This value of cp0 of binary counter is preserved. */
