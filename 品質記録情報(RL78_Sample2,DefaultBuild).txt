@@ -1,8 +1,8 @@
 品質記録情報
-2024年6月5日 9:39:08
+2024年6月5日 11:35:01
 
 ------ ビルド開始(RL78_Sample2, DefaultBuild) ------
-C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.13.00\Bin\ccrl.exe src\counter.c -cpu=S3 -obj_path=DefaultBuild "-dev=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F1058A.DVF" -g -g_line -Osize -I include -c -msg_lang=japanese
+C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.13.00\Bin\ccrl.exe src\74hc.c -cpu=S3 -obj_path=DefaultBuild "-dev=C:\Program Files (x86)\Renesas Electronics\CS+\CC\Device\RL78\Devicefile\DR5F1058A.DVF" -g -g_line -Osize -I include -c -msg_lang=japanese
 W0511186:CC-RL V1のオプション"-Osize"の評価期間は残り51日です。評価期間経過後は、暗黙に"-Olite"指定に変更されます。引き続き"-Osize"を利用したい場合は製品の購入をご検討ください。
 C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RL\V1.13.00\Bin\rlink.exe -subcommand=DefaultBuild\RL78_Sample2.clnk
 W0561018:The evaluation period of CC-RL V1 is valid for the remaining 51 days. After that, functional limit will be applied. Please consider purchasing the product.
@@ -53,8 +53,8 @@ DefaultBuild\RL78_Sample2.clnk :
 
 
 --- SHA1 hash value of output files ---
-Z:\研修\実習\組み込み\RL78_Smaple2\DefaultBuild\RL78_Sample2.abs: 84e64a2d3cd6f38962c075231da546416604e39c
-Z:\研修\実習\組み込み\RL78_Smaple2\DefaultBuild\RL78_Sample2.hex: 4f6bd735f3e36d83998d4ea69f6e66ff16670a9e
+Z:\研修\実習\組み込み\RL78_Smaple2\DefaultBuild\RL78_Sample2.abs: 303705ebdd2f6c6f8cc0ca9e2d5deb2506942a65
+Z:\研修\実習\組み込み\RL78_Smaple2\DefaultBuild\RL78_Sample2.hex: 7e6e3490eed656c1c76e1dc9bfd3a2556ae7f995
 
 
 --- システム情報 ---
@@ -80,13 +80,13 @@ Z:\研修\実習\組み込み\RL78_Smaple2\DefaultBuild\RL78_Sample2.hex: 4f6bd7
  C:\Program Files (x86)\Renesas Electronics\CS+\CC
 *メモリ使用量
  *プライベート・ワーキング・セット
-  346 MB
+  359 MB
  *GDIオブジェクト数
-  2439
+  2618
  *USERオブジェクト数
-  1330
+  1560
  *開いているファイル
-  13 editors, 13 files, 114 KB
+  22 editors, 22 files, 202 KB
 
 --- ビルド・ツール・プラグイン情報 ---
 RH850ビルド・ツールCC-RH用プラグイン
@@ -242,6 +242,8 @@ Z:\研修\実習\組み込み\RL78_Smaple2\RL78_Sample2.mtpj
   
  * SMS Assemblerのバージョン
    V1.00.00.01 [29 May 2020]
+ * GREEN_DSP Structured Assembler のバージョン
+   V1.05.00
  
 
 デバッグ・ツール情報

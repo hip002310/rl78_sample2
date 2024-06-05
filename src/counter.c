@@ -243,11 +243,11 @@ UCHAR BCNT_Evaluate( UCHAR mr, UCHAR cp0, UCHAR cp1, UCHAR max )
 	if (count > max) {
 		/* (Count value of binary counter)<-0 */
 		count = 0;
-		if(g_panel_count==0){
+		/*if(g_panel_count==0){
 		        panel_count();
 		}else if(g_panel_count==1){
 			panel_count_Init();
-		}
+		}*/
 		
 	}
 	

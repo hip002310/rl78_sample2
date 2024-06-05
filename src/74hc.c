@@ -774,19 +774,20 @@ UCHAR  IC_74HC4511_Judge_State( UCHAR LE_in, UCHAR BI_in, UCHAR LT_in )
 UCHAR IC_74HC4511_Evaluate(UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHAR D_in)
 {
     /*							   abcdefgh		*/
-    UCHAR ucRet[11] = {0b11111100, 0b01100000, 0b11011010, 0b11110010, 0b01100110,
-                       0b10110110, 0b00111110, 0b11100000, 0b11111110, 0b11100110, 0b00000000};
-   UCHAR ucRet_2[11] = {0b11111101, 0b01100001, 0b11011011, 0b11110011, 0b01100111,
-                       0b10110111, 0b00111111, 0b11100001, 0b11111111, 0b11100111, 0b00000000};
+    UCHAR ucRet[11] = {0b11111100, 0b11100110, 0b11111110, 0b11100000, 0b00111110,
+                       0b10110110, 0b01100110, 0b11110010, 0b11011010, 0b01100000, 0b00000000};
+   /*UCHAR ucRet_2[11] = {0b11111101, 0b01100001, 0b11011011, 0b11110011, 0b01100111,
+                       0b10110111, 0b00111111, 0b11100001, 0b11111111, 0b11100111, 0b00000000};*/
     UCHAR ucValue;
-    UCHAR ucValue_2;
+   // UCHAR ucValue_2;
    
-    if(g_panel_count==0){
+   // if(g_panel_count==0){
     
         switch (State) {
         case 0:
-            ucValue = A_in + (B_in << 1) + (C_in << 2) + (D_in << 3);
-            if (ucValue > 10) ucValue = 10;
+            ucValue = (A_in) + ((B_in) << 1) + ((C_in) << 2) + ((D_in) << 3);
+	    
+            if (ucValue>10)ucValue=10;
             ByteMemSet(g74HC4511_LastNum, g74HC4511_Count, ucValue);
 	    
             break;
@@ -805,8 +806,8 @@ UCHAR IC_74HC4511_Evaluate(UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHA
         }
 	
         return ucRet[ucValue];
-    }
-	else if(g_panel_count==1){
+   // }
+	/*else if(g_panel_count==1){
 		
         switch (State) {
         case 0:
@@ -829,7 +830,7 @@ UCHAR IC_74HC4511_Evaluate(UCHAR State, UCHAR A_in, UCHAR B_in, UCHAR C_in, UCHA
             break;
         }
         return ucRet_2[ucValue_2];
-	}
+	}*/
 
 		
 	
